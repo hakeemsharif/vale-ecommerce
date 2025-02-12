@@ -30,11 +30,14 @@ const generalSansBold = localFont({
   variable: "--font-gs-bold",
 })
 
+export const viewport = {
+  themeColor: '#FFFFE8',
+}
+
 export const metadata = {
   title: 'VALE | Ecommerce Website',
   description: 'A simple ecommerce website using Next.JS, Strapi, and Snipcart',
   keywords: ['next.js', 'react', 'metadata'],
-  themeColor: '#FFFFE8',
   authors: [{ name: 'Hakeem S.' }],
   icons: {
     icon: [
