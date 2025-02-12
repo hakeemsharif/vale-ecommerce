@@ -1,0 +1,25 @@
+.products {
+    margin-bottom: 50px;
+    border-top: 1px solid black;
+
+    h1 {
+        font-size: 1.44rem;
+        margin: 20px 0;
+    }
+
+    .container {
+        display: block;
+        align-content: center;
+        text-align: center;
+
+        .button {
+            cursor: pointer;
+            font-family: var(--font-gs-bold);
+            color: var(--background);
+            background-color: var(--primary);
+            border: 0;    
+            padding: 20px 60px;
+            margin: 50px 0;
+        }
+    }
+}

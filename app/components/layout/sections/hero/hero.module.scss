@@ -1,0 +1,62 @@
+.hero {
+    height: calc(100vh - 100px);
+    height: calc(100dvh - 100px);
+    position: relative;
+    
+    img {
+        width: 100%;
+        object-fit: cover;
+    }
+    
+    .tagline {
+        position: absolute;
+        left: 50%;
+        top: 25%;
+        transform: translate(-50%, -50%);
+        z-index: 1; 
+        color: var(--primary);
+        font-size: 2.488rem;
+        width: 100%;
+        text-align: center;
+        
+        h1 {
+            font-family: var(--font-gs-medium); 
+        }
+    }
+}
+
+@media (orientation: portrait) {
+    .hero {        
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%;
+        
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }    
+}
+
+@media screen and (max-width: 1000px) {
+    .hero {
+        .tagline {
+            h1 {
+                font-size: 40px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .hero {
+        .tagline {
+            h1 {
+                font-size: 27px;
+            }
+        }
+    }
+}

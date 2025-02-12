@@ -1,0 +1,18 @@
+.page {
+    height: calc(100vh - 316px);
+    height: calc(100vh - 316px);
+    display: block;
+    align-content: center;
+    text-align: center;
+
+    h2 {
+        font-size: 120px;
+        font-family: var(--font-gs-bold);
+        color: var(--primary);
+    }
+
+    p {
+        font-size: 25px;
+        font-family: var(--font-gs-regular);
+    }
+}

@@ -1,0 +1,10 @@
+.section_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-family: var(--font-gs-medium);
+    margin-bottom: 10px;
+}

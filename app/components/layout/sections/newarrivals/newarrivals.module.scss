@@ -1,0 +1,59 @@
+.new_arrivals {
+    .card_container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 20px;
+        text-align: center;  
+
+        .card {
+            text-align: left;
+            overflow: hidden;
+            
+            .container {
+                width: 100%;
+                overflow: hidden;
+                aspect-ratio: 10 / 13;
+            }
+            img {
+                display: block;
+                width: 100%;
+                height: auto;
+                aspect-ratio: 10 / 13;
+                object-fit: cover;
+                transition: transform 0.1s ease;
+              
+                &:hover {
+                  transform: scale(1.1);
+                }
+              }
+        
+            .productName {
+                font-weight: normal;
+                padding: 5px 0;
+                font-size: 1rem;
+            }
+        
+            .price {
+                font-family: var(--font-gs-bold);
+                font-size: 1rem;
+                color: var(--primary);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .new_arrivals {
+        .card_container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+  }
+
+@media screen and (max-width: 350px) {
+    .new_arrivals {
+        .card_container {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+}

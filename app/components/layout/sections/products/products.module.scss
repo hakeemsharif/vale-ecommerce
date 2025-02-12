@@ -1,0 +1,102 @@
+.products {
+    
+  .title {
+    font-family: var(--font-gs-medium);
+  }
+
+  .category {
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: repeat(4, minmax(auto, 1fr));
+      grid-template-rows: 1fr 1fr;
+      grid-template-areas: 
+        "category-one category-three category-three category-four"
+        "category-two category-three category-three category-five";
+  }
+  
+  .category_one, .category_two, .category_three, .category_four, .category_five {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F1F1F1 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 0;
+      
+      .title {
+          transition: transform .1s;
+          font-size: 100px;
+          cursor: pointer;
+          
+          h1 {
+              font-family: var(--font-gs-medium);
+              color: var(--primary);
+              font-size: 40px;
+              transition: transform .1s;
+          }
+      }
+
+      .title:hover h1 {
+          transform: scale(.9); 
+          
+      }
+  }
+
+  .category_one {
+    grid-area: category-one;
+  }
+
+  .category_two {
+    grid-area: category-two;
+  }
+
+  .category_three {
+    grid-area: category-three;
+  }
+
+  .category_four {
+    grid-area: category-four;
+  }
+
+  .category_five {
+    grid-area: category-five;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .products {
+  
+    .category {
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: 1fr;
+        grid-template-areas: 
+          "category-one category-two category-three category-four category-five";
+    }
+    
+    .category_one, .category_two, .category_three, .category_four, .category_five {
+      
+      .title h1 {
+            font-size: 25px;
+        }
+    }  
+  }     
+}
+  
+@media screen and (max-width: 750px) {
+  .products {
+    .category {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);;
+        grid-template-areas: 
+          "category-one category-one"
+          "category-two category-three "
+          "category-four category-five";
+      }
+    
+    .category_one, .category_two, .category_three, .category_four, .category_five {
+      .title {
+        h1 {
+          font-size: 20px;
+        }
+      }
+    }  
+  }     
+}

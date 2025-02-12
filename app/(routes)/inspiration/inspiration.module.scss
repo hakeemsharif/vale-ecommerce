@@ -1,0 +1,23 @@
+.inspiration {
+    border-top: 1px solid black;
+
+    h1 {
+        font-size: 1.44rem;
+        margin: 20px 0;
+    }
+
+    .gallery {
+        width: 100%;
+        margin: 0 auto;
+        columns: 3 400px;
+        column-gap: 20px;
+        margin-bottom: 50px;
+
+        img {
+            display: block;
+            margin-bottom: 20px;
+            width: 100%;
+            height: auto;
+        }
+    }
+}

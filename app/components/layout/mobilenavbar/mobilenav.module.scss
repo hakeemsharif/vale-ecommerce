@@ -1,0 +1,54 @@
+.mobile_nav {
+    padding: 29px;
+    background-color: var(--background);
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    height: 100dvh;
+    width: 100%;
+    z-index: 10;
+    visibility: hidden;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+   
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        img {
+            cursor: pointer;
+        }
+    }
+    .container {
+        margin: 25px;
+        display: block;
+        align-content: center;
+        text-align: center;
+        height: calc(100vh - 200px);
+        height: calc(100dvh - 200px);
+    }
+   
+    .links ul {
+        list-style: none;
+
+        li {
+            padding: 30px;
+
+            a {
+                font-size: 2rem;
+            }
+        }
+        
+        .active {
+            font-family: var(--font-gs-bold);
+            color: var(--primary);
+        }
+    }
+
+    &.open {
+        visibility: visible;
+        transform: translateX(0);
+    }
+}
