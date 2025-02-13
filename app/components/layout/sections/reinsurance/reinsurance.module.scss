@@ -8,6 +8,7 @@
         background-color: white;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
         gap: 10px;
         padding: 50px;
@@ -22,7 +23,7 @@
 @media screen and  (max-width: 1250px) {
     .reinsurance {
         grid-template-columns: repeat(2, 1fr);
-        
+
         .card {
             padding: 30px;
         }
