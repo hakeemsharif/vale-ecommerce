@@ -1,36 +1,29 @@
 import style from "./inspiration.module.scss";
 import Image from "next/image";
+import { getData } from "@/app/libs/getData";
 
 export const metadata = {
-  title: 'VALE | Inspiration',
-  description: 'A simple ecommerce website using Next.JS, Strapi, and Snipcart',
-  keywords: ['next.js', 'react', 'metadata'],
-  authors: [{ name: 'Hakeem S.' }],
-}
-
-async function getInspiration() {
-  try {
-    const res = await fetch(
-      `${process.env.STRAPI_URL}/api/inspirations?populate=*`
-    );
-
-    if (!res.ok) {
-      throw new Error(`Failed to fetch images: ${res.status}`);
-    }
-
-    const data = await res.json();
-    return data.data;
-  } catch (error) {
-    console.error("Error fetching images:", error);
-    return null;
-  }
-}
+  title: "VALE | Inspiration",
+  description: "A simple ecommerce website using Next.JS, Strapi, and Snipcart",
+  keywords: ["next.js", "react", "metadata"],
+  authors: [{ name: "Hakeem S." }],
+};
 
 export default async function InspirationPage() {
-  const data = await getInspiration();
 
-  if (!data) {
-    return <p>Sorry, we couldn't load the products. Please try again later.</p>;
+  // Empty array is initialized to store the data
+  let data = [];
+
+  try {
+    data = await getData("inspirations");
+  } catch (error) {
+    return (
+      <section className="main-sections">
+        <div className={style.new_arrivals}>
+          <p>Sorry, we couldn't load the products. Please try again later.</p>
+        </div>
+      </section>
+    );
   }
 
   return (

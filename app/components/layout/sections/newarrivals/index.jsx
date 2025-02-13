@@ -2,14 +2,14 @@ import style from "./newarrivals.module.scss";
 import SectionHeader from "@/app/components/common/sectionheader";
 import Link from "next/link";
 import Image from "next/image";
-import { getProducts } from "@/app/libs/getProducts"
+import { getData } from "@/app/libs/getData";
 
 export default async function NewArrivals() {
 
   let products = [];
 
   try {
-    products = await getProducts();
+    products = await getData("products");
   } catch (error) {
     return (
       <section className="main-sections">
@@ -40,6 +40,8 @@ export default async function NewArrivals() {
                       height={500}
                       quality={100}
                       loading="lazy"
+                      placeholder="blur"
+                      blurDataURL={product.blurDataURL}
                     />
                   </div>
 

@@ -18,6 +18,8 @@ export default function ItemCard({ data }) {
                   width={500}
                   height={500}
                   quality={100}
+                  placeholder="blur"
+                  blurDataURL={product.blurDataURL}
                 />
               </div>
               <h3 className={style.productName}>{product.Product_Name}</h3>

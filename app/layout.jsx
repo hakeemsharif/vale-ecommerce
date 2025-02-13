@@ -63,11 +63,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${generalSans.variable} ${generalSansLight.variable} ${generalSansSemiBold.variable} ${generalSansBold.variable} ${generalSansMedium.variable}`}>
-        <SnipCart />
         <NextTopLoader color="#3944BC" showSpinner={false} />
         <Navbar />
             {children}
         <Footer/>
+        <SnipCart />
       </body>
     </html>
   );
