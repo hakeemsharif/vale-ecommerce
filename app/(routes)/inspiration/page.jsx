@@ -41,6 +41,8 @@ export default async function InspirationPage() {
             height={500}
             quality={100}
             key={inspiration.id}
+            placeholder="blur"
+            blurDataURL={inspiration.blurDataURL}
           />
         ))}
       </div>
