@@ -1,39 +1,35 @@
 "use client";
 
-import React, { useState } from "react";
-import logo from "@/app/assets/logo/logo.png";
-import Image from "next/image";
+// Icons
 import CartIcon from "@/app/assets/icons/cart.svg";
 import CartFillIcon from "@/app/assets/icons/cart-fill.svg";
 import UserIcon from "@/app/assets/icons/user.svg";
 import MenuIcon from "@/app/assets/icons/menu.svg";
-import style from "./navbar.module.scss";
+import logo from "@/app/assets/logo/logo.png";
+
+// Package
+import Image from "next/image";
 import Link from "next/link";
-import MobileBar from "../mobilenavbar";
 import { usePathname } from "next/navigation";
+
+// Imports
+import style from "./navbar.module.scss";
+import MobileBar from "../mobilenavbar";
 import useSnipcartCount from "@/app/hooks/useSnipcartCount";
+import useMobileNav from "@/app/hooks/useMobileNav";
 
 export default function Navbar() {
   const currentPath = usePathname();
   const { cart } = useSnipcartCount();
+  const { isSidebarOpen, showSidebar, hideSidebar } = useMobileNav();
   const cartHasItems = cart.items.count !== 0;
-
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const showSidebar = () => {
-    setIsSidebarOpen(true);
-  };
-
-  const hideSidebar = () => {
-    setIsSidebarOpen(false);
-  };
 
   return (
     <header>
       <nav className={style.navbar}>
         <div className={style.logo}>
           <Link href="/">
-            <Image src={logo} alt="Website Logo" width={100} quality={100} />
+            <Image src={logo} alt="Website Logo" width={100} quality={100} priority />
           </Link>
         </div>
 
@@ -42,8 +38,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="/"
-                className={currentPath === "/" ? style.active : style.link}
-              >
+                className={currentPath === "/" ? style.active : style.link}>
                 Home
               </Link>
             </li>
@@ -53,9 +48,7 @@ export default function Navbar() {
                 className={
                   currentPath.startsWith("/products")
                     ? style.active
-                    : style.link
-                }
-              >
+                    : style.link}>
                 Products
               </Link>
             </li>
@@ -64,9 +57,7 @@ export default function Navbar() {
               <Link
                 href="/inspiration"
                 className={
-                  currentPath === "/inspiration" ? style.active : style.link
-                }
-              >
+                  currentPath === "/inspiration" ? style.active : style.link}>
                 Inspiration
               </Link>
             </li>
@@ -79,8 +70,7 @@ export default function Navbar() {
               <Image
                 src={UserIcon}
                 alt="User Icon"
-                className="snipcart-customer-signin"
-              />
+                className="snipcart-customer-signin"/>
             </li>
             <li>
               <div className={style.container}>
@@ -88,8 +78,7 @@ export default function Navbar() {
                 <Image
                   className="snipcart-checkout"
                   src={cartHasItems ? CartFillIcon : CartIcon}
-                  alt="Cart Icon"
-                />
+                  alt="Cart Icon"/>
               </div>
             </li>
             <li className={style.mobile_icon} onClick={showSidebar}>
@@ -98,6 +87,7 @@ export default function Navbar() {
           </ul>
         </div>
       </nav>
+
       <MobileBar
         isSidebarOpen={isSidebarOpen}
         hideSidebar={hideSidebar}
