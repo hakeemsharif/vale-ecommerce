@@ -11,7 +11,7 @@ export default function Hero() {
           alt="Hero Image" 
           fill
           priority
-          quality={100}
+          // quality={100}
           placeholder="blur"
         />
         <div className={style.tagline}><h1>Space to breath</h1></div>

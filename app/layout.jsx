@@ -1,73 +1,88 @@
 import Navbar from "./components/layout/navbar";
 import Footer from "./components/layout/footer";
-import SnipCart from "./components/common/SnipCart";
 import localFont from "next/font/local";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
+import Script from "next/script";
+import BannerMessage from "./components/common/BannerMessage";
 
 const generalSans = localFont({
   src: "./fonts/GeneralSans-Regular.otf",
   variable: "--font-gs-regular",
-})
+});
 
 const generalSansLight = localFont({
   src: "./fonts/GeneralSans-Light.otf",
   variable: "--font-gs-light",
-})
+});
 
 const generalSansMedium = localFont({
   src: "./fonts/GeneralSans-Medium.otf",
   variable: "--font-gs-medium",
-})
+});
 
 const generalSansSemiBold = localFont({
   src: "./fonts/GeneralSans-Semibold.otf",
   variable: "--font-gs-semibold",
-})
+});
 
 const generalSansBold = localFont({
   src: "./fonts/GeneralSans-Bold.otf",
   variable: "--font-gs-bold",
-})
+});
 
 export const viewport = {
-  themeColor: '#FFFFE8',
-}
+  themeColor: "#FFFFE8",
+};
 
 export const metadata = {
-  title: 'VALE | Ecommerce Website',
-  description: 'A simple ecommerce website using Next.JS, Strapi, and Snipcart',
-  keywords: ['next.js', 'react', 'metadata'],
-  authors: [{ name: 'Hakeem S.' }],
+  title: "VALE | Ecommerce Website",
+  description: "A simple ecommerce website using Next.JS, Strapi, and Snipcart",
+  keywords: ["next.js", "react", "metadata"],
+  authors: [{ name: "Hakeem S." }],
   icons: {
     icon: [
-      { url: '/favicon.ico' },
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' }
+      { url: "/favicon.ico" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
     ],
     apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
-    other: [
-      { rel: 'manifest', url: '/site.webmanifest' }
-    ]
+    other: [{ rel: "manifest", url: "/site.webmanifest" }],
   },
   appleWebApp: {
-    title: 'Vale',
-    statusBarStyle: 'default'
+    title: "Vale",
+    statusBarStyle: "default",
   },
-
-}
+};
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${generalSans.variable} ${generalSansLight.variable} ${generalSansSemiBold.variable} ${generalSansBold.variable} ${generalSansMedium.variable}`}>
+      <body
+        className={`${generalSans.variable} ${generalSansLight.variable} ${generalSansSemiBold.variable} ${generalSansBold.variable} ${generalSansMedium.variable}`}
+      >
         <NextTopLoader color="#3944BC" showSpinner={false} />
         <Navbar />
-            {children}
-        <Footer/>
-        <SnipCart />
+        {children}
+        <BannerMessage />
+        <Footer />
+        {/* <SnipCart /> */}
+        <Script
+          async
+          dangerouslySetInnerHTML={{
+            __html: `
+                  window.SnipcartSettings = {
+                    publicApiKey: "${process.env.SNIPCART_API}",
+                    loadStrategy: "on-user-interaction",
+                    modalStyle: "side",
+                  };
+
+                  (function(){var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var m,g;(g=(m=window.SnipcartSettings).loadCSS)!=null||(m.loadCSS=!0);var y=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,f=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(f.forEach(function(t){return document.addEventListener(t,o)}),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],n=document.querySelector("#snipcart"),i=document.querySelector('src[src^="'.concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,'"][src$="snipcart.js"]')),e=document.querySelector('link[href^="'.concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,'"][href$="snipcart.css"]'));n||(n=document.createElement("div"),n.id="snipcart",n.setAttribute("hidden","true"),document.body.appendChild(n)),h(n),i||(i=document.createElement("script"),i.src="".concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,"/themes/v").concat(window.SnipcartSettings.version,"/default/snipcart.js"),i.async=!0,t.appendChild(i)),!e&&window.SnipcartSettings.loadCSS&&(e=document.createElement("link"),e.rel="stylesheet",e.type="text/css",e.href="".concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,"/themes/v").concat(window.SnipcartSettings.version,"/default/snipcart.css"),t.prepend(e)),f.forEach(function(v){return document.removeEventListener(v,o)})}function h(t){!y||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();
+                `,
+          }}
+        />
       </body>
     </html>
   );
